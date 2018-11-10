@@ -41,8 +41,6 @@ function setupMarkersByZone(map, zone) {//Creates and places markers based on zo
       var el = document.createElement('div');
       el.className = 'marker';
       el.style.background = 'RED';
-      el.style.width = '50px';
-      el.style.height = '50px';
 
       el.addEventListener('click', function() {
         //Show React modal
@@ -80,8 +78,6 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           var el = document.createElement('div');
           el.className = 'marker';
           el.style.background = 'RED';
-          el.style.width = '50px';
-          el.style.height = '50px';
 
           el.addEventListener('click', function() {
             //Show React modal
