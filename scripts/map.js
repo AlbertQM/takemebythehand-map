@@ -28,13 +28,13 @@ function createMarker(lat, long, map){
   .addTo(map)
 }
 
-function setupMarkers(map, zone) {
+function setupMarkersByZone(map, zone) {
   let curMap = map;
   let curMarkers = []
-  json[zone].forEach( places => {
-    const keys = Object.keys(places)
-    for (let place of keys) {
-      let coords = [places[place].long, places[place].lat];
+  json[zone].forEach(placesObj => {//Places = hydepark obj, soho obj etc.
+    const placesNames = Object.keys(placesObj) //hydepark, soho, etc
+    for (let place of placesNames) {
+      let coords = [placesObj[place].long, placesObj[place].lat];
 
 
       // create a DOM element for the marker
