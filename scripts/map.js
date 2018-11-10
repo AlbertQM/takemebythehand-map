@@ -5,19 +5,19 @@ function setup() {
 }
 
 function draw() {
-    let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
-    //central = setupMarkers(map, 'central'); //Creates markers array
+  let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
+  //central = setupMarkers(map, 'central'); //Creates markers array
   all = setupMarkersByMood(map, 'hungry');
-    noLoop();
+  noLoop();
 }
 
 function createMap(lat, long) {
   mapboxgl.accessToken = API_KEY;
   let map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9',
-      center: [long, lat],
-      zoom: 12,
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [long, lat],
+    zoom: 12,
   });
   return map;
 }
@@ -28,7 +28,7 @@ function createMarker(lat, long, map){
   .addTo(map)
 }
 
-function setupMarkersByZone(map, zone) {
+function setupMarkersByZone(map, zone) {//Creates and places markers based on zone (central, east, south)
   let curMap = map;
   let curMarkers = []
   json[zone].forEach(placesObj => {//Places = hydepark obj, soho obj etc.
@@ -37,63 +37,61 @@ function setupMarkersByZone(map, zone) {
       let coords = [placesObj[place].long, placesObj[place].lat];
 
 
-      // create a DOM element for the marker
+      //Create a DOM element for the marker
       var el = document.createElement('div');
       el.className = 'marker';
-      //el.style.backgroundImage = ;//`url(.${data.Central[0].HydePark.picture})`; ///res/img/places/Hyde_Park.jpg
       el.style.background = 'RED';
-      el.style.width = '50px'; //marker.properties.iconSize[0] + 'px';
-      el.style.height = '50px'; //marker.properties.iconSize[1] + 'px';
+      el.style.width = '50px';
+      el.style.height = '50px';
 
       el.addEventListener('click', function() {
-          //show place pop up
+        //Show React modal
       });
 
-      // add marker to map
+      //Add marker to map
       let curMarker = new mapboxgl.Marker({
-          element: el,
-          anchor: 'bottom'
+        element: el,
+        anchor: 'bottom'
       })
 
-          .setLngLat(coords)
-          .addTo(curMap);
+      .setLngLat(coords)
+      .addTo(curMap);
 
-          curMarkers.push(curMarker)
-        }
+      curMarkers.push(curMarker)
+    }
   });
   return curMarkers;
 }
 
 
-function setupMarkersByMood(map, mood) {
+function setupMarkersByMood(map, mood) {//Creates and places markers based on mood (adventurous, tired, sad, romantic, hungry, creative)
   let curMap = map;
   let curMarkers = []
   for (let zone in json) {
     json[zone].forEach(placesObj => {
-    const placesNames = Object.keys(placesObj)
-    for (let place of placesNames) {
-      let coords = [placesObj[place].long, placesObj[place].lat];
-      let moods = placesObj[place].mood;
+      const placesNames = Object.keys(placesObj)
+      for (let place of placesNames) {
+        let coords = [placesObj[place].long, placesObj[place].lat];
+        let moods = placesObj[place].mood;
 
-      if (moods.hasOwnProperty(mood)) {
+        if (moods.hasOwnProperty(mood)) {
 
-      // create a DOM element for the marker
-      var el = document.createElement('div');
-      el.className = 'marker';
-      //el.style.backgroundImage = ;//`url(.${data.Central[0].HydePark.picture})`; ///res/img/places/Hyde_Park.jpg
-      el.style.background = 'RED';
-      el.style.width = '50px'; //marker.properties.iconSize[0] + 'px';
-      el.style.height = '50px'; //marker.properties.iconSize[1] + 'px';
+          //Create a DOM element for the marker
+          var el = document.createElement('div');
+          el.className = 'marker';
+          el.style.background = 'RED';
+          el.style.width = '50px';
+          el.style.height = '50px';
 
-      el.addEventListener('click', function() {
-          //show place pop up
-      });
+          el.addEventListener('click', function() {
+            //Show React modal
+          });
 
-      // add marker to map
-      let curMarker = new mapboxgl.Marker({
-          element: el,
-          anchor: 'bottom'
-      })
+          //Add marker to map
+          let curMarker = new mapboxgl.Marker({
+            element: el,
+            anchor: 'bottom'
+          })
 
           .setLngLat(coords)
           .addTo(curMap);
@@ -101,19 +99,19 @@ function setupMarkersByMood(map, mood) {
           curMarkers.push(curMarker)
         }
       }
-  });
-}
+    });
+  }
   return curMarkers;
 }
 
 
-function removeMarkers(markersArray) {
+function removeMarkers(markersArray) {//Removes all markers
   for (let marker of markersArray) {
     marker.remove()
   }
 }
 
-function keyPressed() {
+function keyPressed() {//Test interaction
   if (keyCode === DELETE) {
     removeMarkers(central);
   }
