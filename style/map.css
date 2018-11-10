@@ -18,6 +18,8 @@ html, body {
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
+  -webkit-transition: width .5s, height .5s;
+  transition: width .5s, height .5s;
 }
 
 .marker:hover {
