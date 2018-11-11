@@ -34,7 +34,7 @@ function createMarker(lat, long, map){
 function setupMarkersByZone(map, zone) {//Creates and places markers based on zone (central, east, south)
   let curMap = map;
   let curMarkers = []
-  json[zone].forEach(placesObj => {//Places = hydepark obj, soho obj etc.
+  data[zone].forEach(placesObj => {//Places = hydepark obj, soho obj etc.
     const placesNames = Object.keys(placesObj) //hydepark, soho, etc
     for (let place of placesNames) {
       let coords = [placesObj[place].long, placesObj[place].lat];
@@ -68,8 +68,8 @@ function setupMarkersByZone(map, zone) {//Creates and places markers based on zo
 function setupMarkersByMood(map, mood) {//Creates and places markers based on mood (adventurous, tired, sad, romantic, hungry, creative)
   let curMap = map;
   let curMarkers = [];
-  for (let zone in json) {
-    json[zone].forEach(placesObj => {
+  for (let zone in data) {
+    data[zone].forEach(placesObj => {
       const placesNames = Object.keys(placesObj)
       for (let place of placesNames) {
         let coords = [placesObj[place].long, placesObj[place].lat];
