@@ -117,6 +117,13 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
   return curMarkers;
 }
 
+function setIsLiked(zone, place, isLiked){
+  data[zone][0][place].isLiked = isLiked;
+}
+
+function setIsVisited(zone, place, isVisited) {
+  data[zone][0][place].isLiked = isVisited;
+}
 
 function removeMarkers(markersArray) {//Removes all markers
   for (let marker of markersArray) {
