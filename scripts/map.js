@@ -1,13 +1,15 @@
 let central;
+let moodColour;
 
 function setup() {
   noCanvas();
+  moodColour = {adventurous: "BLUE", hungry: "PURPLE", creative: "ORANGE", tired: "GREEN", romantic: "RED", sad: "YELLOW"}
 }
 
 function draw() {
   let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
   //central = setupMarkers(map, 'central'); //Creates markers array
-  all = setupMarkersByMood(map, 'hungry');
+  all = setupMarkersByMood(map, 'adventurous');
   noLoop();
 }
 
@@ -77,7 +79,7 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           //Create a DOM element for the marker
           var el = document.createElement('div');
           el.className = 'marker';
-          el.style.background = 'RED';
+          el.style.background = moodColour[mood];
 
           el.addEventListener('click', function() {
             //Show React modal
