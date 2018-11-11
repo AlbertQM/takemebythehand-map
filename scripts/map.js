@@ -1,6 +1,9 @@
-let moodColour;
+let moodColour; //Obj containing mood:colour
+let data;       //Used to store a copy of json - so we modify the copy, not the original
 
 function setup() {
+  data = json;
+  setIsLiked('central','hydepark', 'yes')
   noCanvas();
   moodColour = {adventurous: "BLUE", hungry: "PURPLE", creative: "ORANGE", tired: "GREEN", romantic: "RED", sad: "YELLOW"}
 }
