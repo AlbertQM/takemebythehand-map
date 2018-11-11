@@ -66,7 +66,7 @@ function setupMarkersByZone(map, zone) {//Creates and places markers based on zo
 
 function setupMarkersByMood(map, mood) {//Creates and places markers based on mood (adventurous, tired, sad, romantic, hungry, creative)
   let curMap = map;
-  let curMarkers = []
+  let curMarkers = [];
   for (let zone in json) {
     json[zone].forEach(placesObj => {
       const placesNames = Object.keys(placesObj)
@@ -77,9 +77,23 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
         if (moods.hasOwnProperty(mood)) {
 
           //Create a DOM element for the marker
-          var el = document.createElement('div');
+          let el = document.createElement('div');
           el.className = 'marker';
           el.style.background = moodColour[mood];
+
+          //Create a DOM element for place name
+          let name = document.createElement('p');
+          name.className = 'placeName';
+          name.innerHTML = place; //placesObj[place].name
+          el.appendChild(name);//TODO: Have the 'name' appear on top of everything
+
+          el.addEventListener('mouseenter', () => {
+            $(name).toggleClass('hovered');
+          })
+
+          el.addEventListener('mouseleave', () => {
+            $(name).toggleClass('hovered');
+          })
 
           el.addEventListener('click', function() {
             //Show React modal
