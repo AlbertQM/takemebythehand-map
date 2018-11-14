@@ -28,6 +28,22 @@ html, body {
 }
 
 .marker-icon-wrapper {
+  display: none;
+  position: relative;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  justify-content: center;
+}
+
+.marker-icon {
+  display: inherit;
+  grid-column: auto;
+  justify-self: center;
+  top: 0%;
+  width: 50px;
+  height: 50px;
+}
   z-index: 3;
   padding: .2em;
   font-size: 20px;
