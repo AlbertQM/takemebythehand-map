@@ -77,14 +77,14 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
 
         if (moods.hasOwnProperty(mood)) {
 
-          //Create a DOM element for the marker
+          //Marker
           let el = document.createElement('div');
           el.className = 'marker';
           el.style.background = moodColour[mood];
 
-          //Create a DOM element for place name
+          //Name
           let name = document.createElement('p');
-          name.className = 'placeName';
+          name.className = 'marker-name';
           el.appendChild(name);//TODO: Have the 'name' appear on top of everything
 
           el.addEventListener('mouseenter', () => {
