@@ -13,7 +13,7 @@ html, body {
   width: 30px;
   height: 30px;
   display: block;
-  border: none;
+  border: 2px solid black;
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
@@ -45,4 +45,7 @@ html, body {
 
 .placeName.hovered {
   opacity: 1;
+  top: 0%;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
 }
