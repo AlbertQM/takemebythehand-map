@@ -88,6 +88,22 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           name.innerHTML = placesObj[place].name;
           el.appendChild(name);//TODO: Have the 'name' appear on top of everything
 
+          //Icons
+          let icons = document.createElement('div');
+          icons.className = 'marker-icon-wrapper'
+
+          let settings = document.createElement('img')
+          settings.className = 'marker-icon'
+          settings.src = '/res/img/icons/settings.svg'
+          icons.appendChild(settings);
+
+          let showPlaceInfo = document.createElement('img')
+          showPlaceInfo.className = 'marker-icon'
+          showPlaceInfo.src = '/res/img/icons/placeholder.svg'
+          icons.appendChild(showPlaceInfo);
+
+          el.appendChild(icons);
+
           el.addEventListener('mouseenter', () => {
             $(name).toggleClass('hovered');
             icons.style.display = 'inline-grid'
