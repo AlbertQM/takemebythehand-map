@@ -27,7 +27,7 @@ html, body {
   border-radius: 10%;
 }
 
-.placeName {
+.marker-icon-wrapper {
   z-index: 3;
   padding: .2em;
   font-size: 20px;
@@ -43,7 +43,7 @@ html, body {
 
 }
 
-.placeName.hovered {
+.marker-name.hovered {
   opacity: 1;
   top: 0%;
   border-top-left-radius: 10%;
