@@ -330,6 +330,21 @@ let json = {
 			"isVisited":"No", "isLiked":"No"
 		},
 
+		"O2":
+		{
+
+			"name":"Up at the O2",
+			"lat":51.503000, "long":0.003200,
+			"mood":{"adventurous":8, },
+			"description":"Adventure experience made up of a guided climb across arena roof, with scenic views of landmarks.",
+			"weekdays":"11.30-17.30",
+			"weekends":"12.00-17.30",
+			"price":"30.00",
+			"picture":"/res/img/places/O2_Arena.jpg",
+			"isVisited":"No", "isLiked":"No"
+		},
+
+
 	}],
 
 	"south":
