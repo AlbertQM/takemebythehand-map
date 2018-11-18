@@ -56,7 +56,7 @@ let json = {
 		"thelondondungeon":
 		{
 			"name":"The London Dungeon",
-			"lat":51.502500,, "long":-0.118800,
+			"lat":51.502500, "long":-0.118800,
 			"mood":{"adventurous":7},
 			"description":"The London Dungeon is a uniquely thrilling attraction that will whisk you way back to the capital's most perilous past. See, hear, feel and (ahem!) smell the chillingly amusing characters of the 'bad old days' as they come to life before you. Will you lose yourself in fear or in mirth? Whichever way, it's not looking good for your underwear!",
 			"weekdays":"10.00-16.00",
