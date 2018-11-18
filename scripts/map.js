@@ -86,7 +86,7 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           let name = document.createElement('p');
           name.className = 'marker-name';
           name.innerHTML = placesObj[place].name;
-          el.appendChild(name);//TODO: Have the 'name' appear on top of everything
+          el.appendChild(name);
 
           //Icons
           let icons = document.createElement('div');
@@ -114,9 +114,17 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
             icons.style.display = 'none'
           })
 
-          el.addEventListener('click', function() {
+          el.addEventListener('click', () => {
             //Show React modal
           });
+
+          settings.addEventListener('click', () => {
+            //Opens settings modal
+          })
+
+          showPlaceInfo.addEventListener('click', () => {
+            //Opens single place page
+          })
 
           //Add marker to map
           let curMarker = new mapboxgl.Marker({
