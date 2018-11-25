@@ -1,5 +1,6 @@
 let moodColour; //Obj containing mood:colour
 let data;       //Used to store a copy of json - so we modify the copy, not the original
+let adventurous, hungry, creative, tired, romantic, sad;
 
 function setup() {
   data = json;
@@ -160,5 +161,97 @@ function removeMarkers(markersArray) {//Removes all markers of a mood
     }
   }
 }
+
+
+function setupMoodFilter(map) {
+  $('#adventMood').click(e => {
+    if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
+      adventurous = setupMarkersByMood(map, 'adventurous');
+    }
+    $(e.target).closest('.moodsConts').toggleClass('selected')
+    $('.moodsConts').not('#adventMood').each((idx, mood) => {
+      $(mood).removeClass('selected')
+    })
+    removeMarkers(hungry);
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+  $('#sadMood').click(e => {
+    if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
+      sad = setupMarkersByMood(map, 'sad');
+    }
+    $(e.target).closest('.moodsConts').toggleClass('selected')
+    $('.moodsConts').not('#romanticMood').each((idx, mood) => {
+      $(mood).removeClass('selected')
+    })
+    removeMarkers(adventurous);
+    removeMarkers(romantic);
+    removeMarkers(hungry);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+  $('#romanticMood').click(e => {
+    if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
+      romantic = setupMarkersByMood(map, 'romantic');
+    }
+    $(e.target).closest('.moodsConts').toggleClass('selected')
+    $('.moodsConts').not('#romanticMood').each((idx, mood) => {
+      $(mood).removeClass('selected')
+    })
+    removeMarkers(sad);
+    removeMarkers(adventurous);
+    removeMarkers(hungry);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+  $('#tiredMood').click(e => {
+    if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
+      tired = setupMarkersByMood(map, 'tired');
+    }
+    $(e.target).closest('.moodsConts').toggleClass('selected')
+    $('.moodsConts').not('#tiredMood').each(mood => {
+      $(mood).removeClass('selected')
+    })
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(hungry);
+    removeMarkers(creative);
+    removeMarkers(adventurous);
+  })
+
+  $('#hungryMood').click(e => {
+    if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
+      hungry = setupMarkersByMood(map, 'hungry');
+    }
+    $(e.target).closest('.moodsConts').toggleClass('selected')
+    $('.moodsConts').not('#romanticMood').each((idx, mood) => {
+      $(mood).removeClass('selected')
+    })
+    removeMarkers(adventurous);
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+  $('#creativeMood').click(e => {
+    if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
+      creative = setupMarkersByMood(map, 'creative');
+    }
+    $(e.target).closest('.moodsConts').toggleClass('selected')
+    $('.moodsConts').not('#romanticMood').each((idx, mood) => {
+      $(mood).removeClass('selected')
+    })
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(hungry);
+    removeMarkers(adventurous);
+    removeMarkers(tired);
+  })
 
 }
