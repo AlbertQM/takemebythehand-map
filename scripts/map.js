@@ -161,8 +161,4 @@ function removeMarkers(markersArray) {//Removes all markers of a mood
   }
 }
 
-function keyPressed() {//Test interaction
-  if (keyCode === DELETE) {
-    removeMarkers(central);
-  }
 }
