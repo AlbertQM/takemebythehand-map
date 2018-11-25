@@ -12,8 +12,6 @@ function setup() {
 }
 
 function draw() {
-  let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
-  all = setupMarkersByMood(map, 'adventurous');
   noLoop();
 }
 
