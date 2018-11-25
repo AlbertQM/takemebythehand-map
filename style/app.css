@@ -1,0 +1,388 @@
+h1{
+	background-color: rgba(255,255,255, 0.4);
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	color: rgb(56, 63, 73);
+	text-align: center;
+	padding: 15px;
+	width: 45%;
+	border-radius: 10px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 120px;
+}
+
+.moodsConts {
+  border-radius: 15px;
+}
+
+#adventMood {
+	background-color: rgba(66, 173, 244, 0.65);
+}
+
+#adventMood:hover {
+	background-color: rgba(66, 173, 244, 0.85);
+}
+
+#sadMood {
+	background-color: rgba(244, 205, 65, 0.65);
+}
+
+#sadMood:hover {
+	background-color: rgba(244, 205, 65, 0.85);
+}
+
+#romanticMood {
+	background-color: rgba(218, 118, 104, 0.65);
+}
+
+#romanticMood:hover {
+	background-color: rgba(218, 118, 104, 0.85);
+}
+
+#hungryMood {
+	background-color: rgba(118, 69, 209, 0.65);
+}
+
+#hungryMood:hover {
+	background-color: rgba(118, 69, 209, 0.85);
+}
+
+#tiredMood {
+	background-color: rgba(56, 181, 97, 0.65);
+}
+
+#tiredMood:hover {
+	background-color: rgba(56, 181, 97, 0.85);
+}
+
+#creativeMood {
+	background-color: rgba(229, 150, 22, 0.65);
+}
+
+#creativeMood:hover {
+	background-color: rgba(229, 150, 22, 0.85);
+}
+
+.grid-container {
+  position: absolute;
+	display: grid;
+	grid-template-columns: repeat(6, 220px);
+  grid-template-rows: 220px;
+	grid-gap: 10px;
+	justify-content: center;
+  z-index: 5;
+  transform: scale(0.3) translateY(-100%) translateX(-10%);
+  background: rgba(245, 245, 245, .9);
+  padding: 3%;
+  border-radius: 5%;
+}
+
+#sadface {
+	position: absolute;
+	width: 140px;
+	display: block;
+	margin-left: 40px;
+  margin-top: 20px;
+}
+
+#tear {
+	position: absolute;
+    width: 100px;
+    height: 50px;
+    margin-left: 61px;
+	margin-top: 92px;
+	float: left;
+}
+
+#sadMood:hover > #tear { animation: crying 1.5s infinite; }
+
+@keyframes crying {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+#couple {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    display: block;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding-right: 10px;
+}
+
+#heart {
+    width: 205px;
+    height: 205px;
+    position: absolute;
+    display: block;
+	margin-left: 5px;
+}
+
+#romanticMood:hover > #heart {
+	animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat
+{
+  0%
+  {
+    transform: scale( .75 );
+  }
+  20%
+  {
+    transform: scale( 1 );
+  }
+  40%
+  {
+    transform: scale( .75 );
+  }
+  60%
+  {
+    transform: scale( 1 );
+  }
+  80%
+  {
+    transform: scale( .75 );
+  }
+  100%
+  {
+    transform: scale( .75 );
+  }
+}
+
+#burger1, #burger2, #burger3 {
+    width: 170px;
+    height: 170px;
+    position: absolute;
+	margin-left: 25px;
+    margin-top: 25px;
+
+}
+
+#hungryMood:hover > #burger1 {
+	animation: eating 4s infinite;
+}
+
+#hungryMood:hover > #burger2 {
+	animation: eating 4s infinite;
+	animation-delay: 1s;
+}
+
+#hungryMood:hover > #burger3 {
+	animation: eating 4s infinite;
+	animation-delay: 2s;
+}
+
+@keyframes eating  {
+  0% {
+    opacity:1;
+  }
+  33% {
+    opacity:0;
+  }
+  66% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+#tiredMan{
+	width: 160px;
+	height: 160px;
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+
+.Zzz span {
+  width: 15px;
+  height: 15px;
+  display: block;
+  text-align: center;
+  position: absolute;
+  opacity: 0;
+  font-size: 35px;
+  color: #27590d;
+  line-height: 15px;
+}
+
+.Zzz .s2 {
+	margin-left: 62px;
+	margin-top: 31px;}
+.Zzz .s3 {
+	margin-left: 85px;
+	margin-top: 35px;}
+.Zzz .s4 {
+	margin-left: 105px;
+	margin-top: 49px;}
+.Zzz .s5 {
+	margin-left: 80px;
+	margin-top: 60px;}
+.Zzz .s6 {
+	margin-left: 100px;
+	margin-top: 70px;}
+
+.Zzz {
+  height: 60px;
+  width: 80px;
+  position: absolute;
+}
+
+@keyframes zzz  {
+  0% {opacity: 0; transform: scale3d(.3, .3, .3) rotate(20deg);}
+  50% {opacity: 1;}
+  80% {transform: translateY(-30px) translateX(-20px) rotate(-10deg); opacity: 0;}
+  100% {opacity:0;}
+}
+
+#creativeFace {
+	width: 170px;
+	position: absolute;
+	margin-left: 30px;
+    margin-top: 20px;
+}
+
+#tiredMood:hover > .Zzz span {
+	animation: zzz 2s linear infinite;
+}
+
+#gear1, #gear2, #gear3 {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+}
+
+#gear1 {
+    margin-left: 52px;
+    margin-top: 73px;
+}
+
+#gear2 {
+	margin-left: 73px;
+    margin-top: 40px;
+}
+
+#gear3 {
+    margin-left: 112px;
+    margin-top: 46px;
+}
+
+#creativeMood:hover > .spin {
+	animation:spin 4s linear infinite;
+}
+
+#creativeMood:hover > .spin-back {
+	animation:spin-back 4s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spin { 100% { transform: rotate(360deg); transform:rotate(360deg); } }
+
+@keyframes spin-back { 100% { transform: rotate(-360deg); } }
+@keyframes spin-back { 100% { transform: rotate(-360deg); } }
+@keyframes spin-back { 100% { transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+#compass {
+    width: 140px;
+    height: 155px;
+    position: absolute;
+	margin-left: 40px;
+    margin-top: 25px;
+}
+
+#traveler {
+    width: 100px;
+    height: 120px;
+    position: absolute;
+    margin-top: 65px;
+    margin-left: 20px;
+}
+
+#arrow {
+    width: 40px;
+    height: 90px;
+    position: absolute;
+	margin-left: 90px;
+    margin-top: 73px;
+}
+
+#adventMood:hover > #arrow {
+ 	animation: rotateCompass 6s alternate infinite;
+}
+
+@keyframes rotateCompass{
+	0% {
+    	transform: rotate(0deg);
+    }
+    50% {
+    	transform: rotate(540deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.carouselPics {
+  width: 346px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 15px 15px 0 0 ;
+}
+
+.carouselElement {
+  background-color: rgba(255,255,255, 0.4);
+  margin-left: 12px;
+  margin-right: 12px;
+
+  border-radius: 15px;
+  height: 450px;
+}
+
+.slick-arrow {
+  background-color: red;
+}
+.slick-arrow:hover {
+  background-color: blue;
+}
+
+.slides {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 4%;
+}
+
+#carousel {
+  width: 77%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#homeIcon {
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 100px;
+  opacity: 0.7;
+}
+
+p {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: black;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
