@@ -153,9 +153,11 @@ function setIsVisited(zone, place, isVisited) {
   data[zone][0][place].isLiked = isVisited;
 }
 
-function removeMarkers(markersArray) {//Removes all markers
-  for (let marker of markersArray) {
-    marker.remove()
+function removeMarkers(markersArray) {//Removes all markers of a mood
+  if(markersArray != null) {
+    for (let marker of markersArray) {
+      marker.remove()
+    }
   }
 }
 
