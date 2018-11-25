@@ -5,7 +5,9 @@ function setup() {
   data = json;
   setIsLiked('central','hydepark', 'yes')
   noCanvas();
-  moodColour = {adventurous: "BLUE", hungry: "PURPLE", creative: "ORANGE", tired: "GREEN", romantic: "RED", sad: "YELLOW"}
+  moodColour = {adventurous: "rgba(66, 173, 244, 0.65)", hungry: "rgba(118, 69, 209, 0.65)", creative: "rgba(229, 150, 22, 0.65)", tired: "rgba(56, 181, 97, 0.65)", romantic: "rgba(218, 118, 104, 0.65)", sad: "rgba(244, 205, 65, 0.65)"}
+  let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
+  setupMoodFilter(map);
 }
 
 function draw() {
