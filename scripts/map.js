@@ -96,6 +96,8 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           let settings = document.createElement('img')
           settings.className = 'marker-icon'
           settings.src = '/res/img/icons/settings.svg'
+          $(settings).attr('data-toggle', 'modal');
+          $(settings).attr('data-target', '#changeSettings');
           icons.appendChild(settings);
 
           let showPlaceInfo = document.createElement('img')

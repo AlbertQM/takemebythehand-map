@@ -44,6 +44,7 @@
 </head>
 
 <body>
+	<!--  MOOD FILTER -->
 	<div class="grid-container">
 		<a class="moodsConts" id="adventMood" >
 			<img id="compass" src="./res/img/icons/compass.png">
@@ -80,7 +81,62 @@
 			<img id="gear3" class="spin" src="./res/img/icons/gear.png">
 		</a>
 	</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="changeSettings" tabindex="-1" role="dialog" aria-labelledby="modal-settings" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-place_name">'place name' settings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+			<div class="modal-body">
+			  <h5 class="text-center">Have I been here before?</h5>
+			  <p class="text-center">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative yes" width="50px" height="50px" src="./res/img/icons/success.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative no" width="50px" height="50px" src="./res/img/icons/error.svg">
+				</p>
+			  <hr>
+			  <h5 class="text-center">Do I like this place?</h5>
+				<p class="text-center">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative yes" width="50px" height="50px" src="./res/img/icons/success.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative no" width="50px" height="50px" src="./res/img/icons/error.svg">
+				</p>
+				<hr>
+				<h5 class="text-center">How does this place makes me feel?</h5>
+				<p class="text-center">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative" width="50px" height="50px" src="./res/img/icons/success.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative" width="50px" height="50px" src="./res/img/icons/error.svg">
+				</p>
+			</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<!-- MAP -->
 	<div id='map'></div>
+
+	<!-- Modal Script -->
+	<script type="text/javascript">
+	$('.yes').each((idx, el) => {
+		$(el).on('click', e => {
+			$(e.target).toggleClass('btn-success')
+		})
+	})
+
+	$('.no').each((idx, el) => {
+		$(el).on('click', e => {
+			$(e.target).toggleClass('btn-danger')
+		})
+	})
+
+	</script>
 </body>
 
 </html>
