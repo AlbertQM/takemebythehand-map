@@ -3,9 +3,11 @@ let data;       //Used to store a copy of json - so we modify the copy, not the 
 let adventurous, hungry, creative, tired, romantic, sad;
 
 function setup() {
-  data = json;
   setIsLiked('central','hydepark', 'yes')
   noCanvas();
+  /* Data is the variable we will use to keep track of user preferences. E.g. if a user says he/she likes a place, it will be stored in 'data'. And this will be stored in localStorage*/
+  data = JSON.parse(localStorage.getItem('data')) || json; //Using localStorage 'data' if it exists, else use json (which is default data)
+  //localStorage.setItem('data', JSON.stringify(json)) //save 'data' to localStorage
   moodColour = {adventurous: "rgba(66, 173, 244, 0.65)", hungry: "rgba(118, 69, 209, 0.65)", creative: "rgba(229, 150, 22, 0.65)", tired: "rgba(56, 181, 97, 0.65)", romantic: "rgba(218, 118, 104, 0.65)", sad: "rgba(244, 205, 65, 0.65)"}
   let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
   setupMoodFilter(map);
