@@ -121,11 +121,13 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
               $('.liked-yes').removeClass('btn-success')
             }
 
+            /* Resets hovered moods */
+            $('.grid-container-modal a').each((idx, el) => {
+              $(el).removeClass('hovered')
+            })
+            /* Turns on active moods */
             Object.keys(moods).forEach(singleMood => {
-              $(`#${singleMood}`).addClass('hovered')
-              $('#modal-mood a').each((idx, el) => {
-                $(el).removeClass('hovered')
-              })
+              $(`#${singleMood}`).addClass('hovered');
             })
 
           })
@@ -148,17 +150,6 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
             icons.style.display = 'none'
           })
 
-          el.addEventListener('click', () => {
-            //Show React modal
-          });
-
-          settings.addEventListener('click', () => {
-            //Opens settings modal
-          })
-
-          showPlaceInfo.addEventListener('click', () => {
-            //Opens single place page
-          })
 
           //Add marker to map
           let curMarker = new mapboxgl.Marker({
