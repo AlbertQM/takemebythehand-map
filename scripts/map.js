@@ -148,17 +148,6 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
             icons.style.display = 'none'
           })
 
-          el.addEventListener('click', () => {
-            //Show React modal
-          });
-
-          settings.addEventListener('click', () => {
-            //Opens settings modal
-          })
-
-          showPlaceInfo.addEventListener('click', () => {
-            //Opens single place page
-          })
 
           //Add marker to map
           let curMarker = new mapboxgl.Marker({
