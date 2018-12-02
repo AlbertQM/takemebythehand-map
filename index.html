@@ -161,18 +161,69 @@
 
 	<!-- Modal Script -->
 	<script type="text/javascript">
-	$('.yes').each((idx, el) => {
-		$(el).on('click', e => {
-			$(e.target).toggleClass('btn-success')
-		})
-	})
+	$('.visited-yes').on('click', e => {
+			data = JSON.parse(localStorage.getItem('data')) || json;
+			let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+			let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+			data[zone][0][place].isVisited = 'yes';
+			localStorage.setItem('data', JSON.stringify(data))
 
-	$('.no').each((idx, el) => {
-		$(el).on('click', e => {
-			$(e.target).toggleClass('btn-danger')
+			if(data[zone][0][place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+				$('.visited-yes').addClass('btn-success')
+				$('.visited-no').removeClass('btn-danger')
+			} else {
+				$('.visited-no').addClass('btn-danger')
+				$('.visited-yes').removeClass('btn-danger')
+			}
 		})
-	})
 
+		$('.visited-no').on('click', e => {
+				data = JSON.parse(localStorage.getItem('data')) || json;
+				let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+				let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+				data[zone][0][place].isVisited = 'no';
+				localStorage.setItem('data', JSON.stringify(data))
+
+				if(data[zone][0][place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+					$('.visited-yes').addClass('btn-success')
+					$('.visited-no').removeClass('btn-danger')
+				} else {
+					$('.visited-no').addClass('btn-danger')
+					$('.visited-yes').removeClass('btn-success')
+				}
+			})
+
+			$('.liked-yes').on('click', e => {
+					data = JSON.parse(localStorage.getItem('data')) || json;
+					let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+					let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+					data[zone][0][place].isVisited = 'yes';
+					localStorage.setItem('data', JSON.stringify(data))
+
+					if(data[zone][0][place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+						$('.liked-yes').addClass('btn-success')
+						$('.liked-no').removeClass('btn-danger')
+					} else {
+						$('.liked-no').addClass('btn-danger')
+						$('.liked-yes').removeClass('btn-danger')
+					}
+				})
+
+				$('.liked-no').on('click', e => {
+						data = JSON.parse(localStorage.getItem('data')) || json;
+						let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+						let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+						data[zone][0][place].isLiked = 'no';
+						localStorage.setItem('data', JSON.stringify(data))
+
+						if(data[zone][0][place].isLiked === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+							$('.liked-yes').addClass('btn-success')
+							$('.liked-no').removeClass('btn-danger')
+						} else {
+							$('.liked-no').addClass('btn-danger')
+							$('.liked-yes').removeClass('btn-success')
+						}
+					})
 	</script>
 </body>
 
