@@ -94,21 +94,55 @@
       </div>
 			<div class="modal-body">
 			  <h5 class="text-center">Have I been here before?</h5>
-			  <p class="text-center">
-					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative yes" width="50px" height="50px" src="./res/img/icons/success.svg">
-					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative no" width="50px" height="50px" src="./res/img/icons/error.svg">
+			  <p id="modal-mood" class="text-center">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative visited-yes" width="50px" height="50px" src="./res/img/icons/success.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative visited-no" width="50px" height="50px" src="./res/img/icons/error.svg">
 				</p>
 			  <hr>
 			  <h5 class="text-center">Do I like this place?</h5>
 				<p class="text-center">
-					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative yes" width="50px" height="50px" src="./res/img/icons/success.svg">
-					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative no" width="50px" height="50px" src="./res/img/icons/error.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative liked-yes" width="50px" height="50px" src="./res/img/icons/success.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative liked-no" width="50px" height="50px" src="./res/img/icons/error.svg">
 				</p>
 				<hr>
 				<h5 class="text-center">How does this place makes me feel?</h5>
 				<p class="text-center">
-					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative" width="50px" height="50px" src="./res/img/icons/success.svg">
-					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative" width="50px" height="50px" src="./res/img/icons/error.svg">
+					<div class="grid-container-modal">
+						<a id="adventurous" class="moodsConts adventMood modal-mood" >
+							<img class="compass" src="./res/img/icons/compass.png">
+							<img class="arrow" src="./res/img/icons/arrow.png">
+							<img class="traveler" src="./res/img/icons/traveler.png">
+						</a>
+						<a id="sad" class="moodsConts sadMood modal-mood" >
+							<img class="sadface" src="./res/img/icons/sadface.png">
+							<img class="tear" src="./res/img/icons/tear.png">
+						</a>
+						<a id="romantic" class="moodsConts romanticMood modal-mood" >
+							<img class="heart" src="./res/img/icons/heart.png">
+							<img class="couple" src="./res/img/icons/couple.png">
+						</a>
+						<a id="hungry" class="moodsConts hungryMood modal-mood" >
+							<img class="burger1" src="./res/img/icons/burger1.png">
+							<img class="burger2" src="./res/img/icons/burger2.png">
+							<img class="burger3" src="./res/img/icons/burger3.png">
+						</a>
+						<a id="tired" class="moodsConts tiredMood modal-mood" >
+							<div class="Zzz">
+								<span class="s2">z</span>
+								<span class="s3">z</span>
+								<span class="s4">z</span>
+								<span class="s5">z</span>
+								<span class="s6">z</span>
+							</div>
+							<img class="tiredMan" src="./res/img/icons/tiredMan.png">
+						</a>
+						<a id="creative" class="moodsConts creativeMood modal-mood" >
+							<img class="creativeFace" src="./res/img/icons/creativeFace.png">
+							<img class="gear1 spin" src="./res/img/icons/gear.png">
+							<img class="gear2 spin-back" src="./res/img/icons/gear.png">
+							<img class="gear3 spin" src="./res/img/icons/gear.png">
+						</a>
+					</div>
 				</p>
 			</div>
       <div class="modal-footer">
