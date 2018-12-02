@@ -161,7 +161,6 @@
 	<!-- Modal Script -->
 	<script type="text/javascript">
 	$('.visited-yes').on('click', e => {
-			data = JSON.parse(localStorage.getItem('data')) || json;
 			let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
 			let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
 			data[zone][0][place].isVisited = 'yes';
@@ -177,7 +176,6 @@
 		})
 
 		$('.visited-no').on('click', e => {
-				data = JSON.parse(localStorage.getItem('data')) || json;
 				let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
 				let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
 				data[zone][0][place].isVisited = 'no';
@@ -193,7 +191,6 @@
 			})
 
 			$('.liked-yes').on('click', e => {
-					data = JSON.parse(localStorage.getItem('data')) || json;
 					let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
 					let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
 					data[zone][0][place].isVisited = 'yes';
@@ -209,7 +206,6 @@
 				})
 
 				$('.liked-no').on('click', e => {
-						data = JSON.parse(localStorage.getItem('data')) || json;
 						let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
 						let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
 						data[zone][0][place].isLiked = 'no';
