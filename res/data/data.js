@@ -11,7 +11,7 @@ let json = {
 			"weekends":"5.00-12.00",
 			"price":"Free",
 			"picture":"/res/img/places/Hyde_Park.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"sohosquaregardens":
@@ -24,7 +24,7 @@ let json = {
 			"weekends":"0.00-23.59",
 			"price":"Free",
 			"picture":"/res/img/places/Soho_Gardens.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"thelondoneye":
@@ -37,7 +37,7 @@ let json = {
 			"weekends":"10.00-20.30",
 			"price":"25.20",
 			"picture":"/res/img/places/London_Eye.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"westminster":
@@ -50,7 +50,7 @@ let json = {
 			"weekends":"9.30-13.30",
 			"price":"20.00",
 			"picture":"/res/img/places/WestMinster_Photo.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"thelondondungeon":
@@ -63,7 +63,7 @@ let json = {
 			"weekends":"10.00-18.00",
 			"price":"30.00",
 			"picture":"/res/img/places/London_Dungeon.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"lyceumtheatre":
@@ -76,7 +76,7 @@ let json = {
 			"weekends":"11.00-15.00",
 			"price":"20.00",
 			"picture":"/res/img/places/Lyceum_Theatre.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"inamo":
@@ -89,7 +89,7 @@ let json = {
 			"weekends":"12.00-0.00",
 			"price":"Menu",
 			"picture":"/res/img/places/Inamo_Covent.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"darcie&maygreen":
@@ -102,7 +102,7 @@ let json = {
 			"weekends":"8.00-23.00",
 			"price":"Menu",
 			"picture":"/res/img/places/Darc_May_Green.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"levant":
@@ -115,7 +115,7 @@ let json = {
 			"weekends":"12.00-2.30",
 			"price":"Menu",
 			"picture":"/res/img/places/Levant_R.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"tatebritain":
@@ -128,7 +128,7 @@ let json = {
 			"weekends":"10.00-18.00",
 			"price":"Free",
 			"picture":"/res/img/places/Tate_Britain.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"buckinghampalace":
@@ -141,7 +141,7 @@ let json = {
 			"weekends":"9.30-17.15",
 			"price":"24.00",
 			"picture":"/res/img/places/Buckingham_Pal.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"cahoots":
@@ -154,7 +154,7 @@ let json = {
 			"weekends":"13.00-3.00",
 			"price":"Menu",
 			"picture":"/res/img/places/Cahoots_B.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"preto":
@@ -167,7 +167,7 @@ let json = {
 			"weekends":"12.00-0.00",
 			"price":"Menu",
 			"picture":"/res/img/places/Preto_WestEnd.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"somersethouse":
@@ -180,7 +180,7 @@ let json = {
 			"weekends":"8.00-23.00",
 			"price":"Free",
 			"picture":"/res/img/places/Somerset_H.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"toweroflondon":
@@ -193,7 +193,7 @@ let json = {
 			"weekends":"9.00-16.30",
 			"price":"22.70",
 			"picture":"/res/img/places/Tower_London.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 	}],
 
@@ -210,7 +210,7 @@ let json = {
 			"weekends":"12.00-2200",
 			"price":"Menu",
 			"picture":"/res/img/places/Wahaca_Strat.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"whitechapelgallery":
@@ -223,7 +223,7 @@ let json = {
 			"weekends":"11.00-18.00",
 			"price":"Varies",
 			"picture":"/res/img/places/White_Gal.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"genesiscinema":
@@ -236,7 +236,7 @@ let json = {
 			"weekends":"8.00-0.00",
 			"price":"Varies",
 			"picture":"/res/img/places/Genes_C.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"allstarlanes":
@@ -249,7 +249,7 @@ let json = {
 			"weekends":"10.00-0.00",
 			"price":"9.95",
 			"picture":"/res/img/places/AStar_Bowl.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"pastaremoli":
@@ -262,7 +262,7 @@ let json = {
 			"weekends":"9.00-21.00",
 			"price":"Menu",
 			"picture":"/res/img/places/P_Rem.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"thecoffeeroom":
@@ -275,7 +275,7 @@ let json = {
 			"weekends":"8.00-17.00",
 			"price":"Menu",
 			"picture":"/res/img/places/Coffee_Room.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"bigeasy":
@@ -288,7 +288,7 @@ let json = {
 			"weekends":"11.00-22.30",
 			"price":"Menu",
 			"picture":"/res/img/places/Big_Easy_C.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"bricklanemarket":
@@ -301,7 +301,7 @@ let json = {
 			"weekends":"11.00-18.00",
 			"price":"Varies",
 			"picture":"/res/img/places/Brick_Market.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"thehalfmoon":
@@ -314,7 +314,7 @@ let json = {
 			"weekends":"11.00-1.00",
 			"price":"Menu",
 			"picture":"/res/img/places/Half_Moon.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"boxpark":
@@ -327,7 +327,7 @@ let json = {
 			"weekends":"12.00-22.00",
 			"price":"Free",
 			"picture":"/res/img/places/Boxed.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"O2":
@@ -341,7 +341,7 @@ let json = {
 			"weekends":"12.00-17.30",
 			"price":"30.00",
 			"picture":"/res/img/places/O2_Arena.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 
@@ -359,7 +359,7 @@ let json = {
 			"weekends":"10.00-3.00",
 			"price":"Menu",
 			"picture":"/res/img/places/Blues_K.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"royalobservatory":
@@ -372,7 +372,7 @@ let json = {
 			"weekends":"10.00-17.00",
 			"price":"Free",
 			"picture":"/res/img/places/Royal_Ob.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"bunker51":
@@ -385,7 +385,7 @@ let json = {
 			"weekends":"9.00-22.00",
 			"price":"20.00-50.00",
 			"picture":"/res/img/places/Bunk_51.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"novotelblackfrairs":
@@ -398,7 +398,7 @@ let json = {
 			"weekends":"0.00-23.59",
 			"price":"140.00",
 			"picture":"/res/img/places/Novo.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"namcofunscape":
@@ -411,7 +411,7 @@ let json = {
 			"weekends":"10.00-0.00",
 			"price":"Varies",
 			"picture":"/res/img/places/Namco.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 
 		"hiltontowerbridge":
@@ -424,7 +424,7 @@ let json = {
 			"weekends":"0.00-23.59",
 			"price":"224.00",
 			"picture":"/res/img/places/Hilton_Tower.jpg",
-			"isVisited":"No", "isLiked":"No"
+			"isVisited":"no", "isLiked":"no"
 		},
 	}],
 }
