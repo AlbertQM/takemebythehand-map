@@ -1,9 +1,8 @@
 let moodColour; //Obj containing mood:colour
 let data;       //Used to store a copy of json - so we modify the copy, not the original
-let adventurous, hungry, creative, tired, romantic, sad;
+let adventurous, hungry, creative, tired, romantic, sad; //Used to filter the markers
 
 function setup() {
-  setIsLiked('central','hydepark', 'yes')
   noCanvas();
   /* Data is the variable we will use to keep track of user preferences. E.g. if a user says he/she likes a place, it will be stored in 'data'. And this will be stored in localStorage*/
   data = JSON.parse(localStorage.getItem('data')) || json; //Using localStorage 'data' if it exists, else use json (which is default data)
@@ -100,6 +99,36 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           settings.src = '/res/img/icons/settings.svg'
           $(settings).attr('data-toggle', 'modal');
           $(settings).attr('data-target', '#changeSettings');
+          $(settings).on('click', e => {
+            $('#modal-place_name').html(placesObj[place].name) //Set modal name to place clicked
+            $('#modal-place_name').attr('zone', zone)
+            $('#modal-place_name').attr('place', place)
+
+
+            if(placesObj[place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+              $('.visited-yes').addClass('btn-success')
+              $('.visited-no').removeClass('btn-danger')
+            } else {
+              $('.visited-no').addClass('btn-danger')
+              $('.visited-yes').removeClass('btn-success')
+            }
+
+            if(placesObj[place].isLiked === "yes") {
+              $('.liked-yes').addClass('btn-success')
+              $('.liked-no').removeClass('btn-danger')
+            } else {
+              $('.liked-no').addClass('btn-danger')
+              $('.liked-yes').removeClass('btn-success')
+            }
+
+            Object.keys(moods).forEach(singleMood => {
+              $(`#${singleMood}`).addClass('hovered')
+              $('#modal-mood a').each((idx, el) => {
+                $(el).removeClass('hovered')
+              })
+            })
+
+          })
           icons.appendChild(settings);
 
           let showPlaceInfo = document.createElement('img')
@@ -166,7 +195,7 @@ function removeMarkers(markersArray) {//Removes all markers of a mood
 
 
 function setupMoodFilter(map) {
-  $('#adventMood').click(e => {
+  $('.adventMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       adventurous = setupMarkersByMood(map, 'adventurous');
     }
@@ -181,7 +210,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#sadMood').click(e => {
+  $('.sadMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       sad = setupMarkersByMood(map, 'sad');
     }
@@ -196,7 +225,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#romanticMood').click(e => {
+  $('.romanticMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       romantic = setupMarkersByMood(map, 'romantic');
     }
@@ -211,7 +240,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#tiredMood').click(e => {
+  $('.tiredMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       tired = setupMarkersByMood(map, 'tired');
     }
@@ -226,7 +255,7 @@ function setupMoodFilter(map) {
     removeMarkers(adventurous);
   })
 
-  $('#hungryMood').click(e => {
+  $('.hungryMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       hungry = setupMarkersByMood(map, 'hungry');
     }
@@ -241,7 +270,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#creativeMood').click(e => {
+  $('.creativeMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       creative = setupMarkersByMood(map, 'creative');
     }
