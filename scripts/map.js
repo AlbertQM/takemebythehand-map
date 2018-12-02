@@ -1,11 +1,12 @@
 let moodColour; //Obj containing mood:colour
 let data;       //Used to store a copy of json - so we modify the copy, not the original
-let adventurous, hungry, creative, tired, romantic, sad;
+let adventurous, hungry, creative, tired, romantic, sad; //Used to filter the markers
 
 function setup() {
-  data = json;
-  setIsLiked('central','hydepark', 'yes')
   noCanvas();
+  /* Data is the variable we will use to keep track of user preferences. E.g. if a user says he/she likes a place, it will be stored in 'data'. And this will be stored in localStorage*/
+  data = JSON.parse(localStorage.getItem('data')) || json; //Using localStorage 'data' if it exists, else use json (which is default data)
+  //localStorage.setItem('data', JSON.stringify(json)) //save 'data' to localStorage
   moodColour = {adventurous: "rgba(66, 173, 244, 0.65)", hungry: "rgba(118, 69, 209, 0.65)", creative: "rgba(229, 150, 22, 0.65)", tired: "rgba(56, 181, 97, 0.65)", romantic: "rgba(218, 118, 104, 0.65)", sad: "rgba(244, 205, 65, 0.65)"}
   let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
   setupMoodFilter(map);
@@ -96,6 +97,38 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           let settings = document.createElement('img')
           settings.className = 'marker-icon'
           settings.src = '/res/img/icons/settings.svg'
+          $(settings).attr('data-toggle', 'modal');
+          $(settings).attr('data-target', '#changeSettings');
+          $(settings).on('click', e => {
+            $('#modal-place_name').html(placesObj[place].name) //Set modal name to place clicked
+            $('#modal-place_name').attr('zone', zone)
+            $('#modal-place_name').attr('place', place)
+
+
+            if(placesObj[place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+              $('.visited-yes').addClass('btn-success')
+              $('.visited-no').removeClass('btn-danger')
+            } else {
+              $('.visited-no').addClass('btn-danger')
+              $('.visited-yes').removeClass('btn-success')
+            }
+
+            if(placesObj[place].isLiked === "yes") {
+              $('.liked-yes').addClass('btn-success')
+              $('.liked-no').removeClass('btn-danger')
+            } else {
+              $('.liked-no').addClass('btn-danger')
+              $('.liked-yes').removeClass('btn-success')
+            }
+
+            Object.keys(moods).forEach(singleMood => {
+              $(`#${singleMood}`).addClass('hovered')
+              $('#modal-mood a').each((idx, el) => {
+                $(el).removeClass('hovered')
+              })
+            })
+
+          })
           icons.appendChild(settings);
 
           let showPlaceInfo = document.createElement('img')
@@ -162,7 +195,7 @@ function removeMarkers(markersArray) {//Removes all markers of a mood
 
 
 function setupMoodFilter(map) {
-  $('#adventMood').click(e => {
+  $('.adventMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       adventurous = setupMarkersByMood(map, 'adventurous');
     }
@@ -177,7 +210,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#sadMood').click(e => {
+  $('.sadMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       sad = setupMarkersByMood(map, 'sad');
     }
@@ -192,7 +225,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#romanticMood').click(e => {
+  $('.romanticMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       romantic = setupMarkersByMood(map, 'romantic');
     }
@@ -207,7 +240,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#tiredMood').click(e => {
+  $('.tiredMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       tired = setupMarkersByMood(map, 'tired');
     }
@@ -222,7 +255,7 @@ function setupMoodFilter(map) {
     removeMarkers(adventurous);
   })
 
-  $('#hungryMood').click(e => {
+  $('.hungryMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       hungry = setupMarkersByMood(map, 'hungry');
     }
@@ -237,7 +270,7 @@ function setupMoodFilter(map) {
     removeMarkers(tired);
   })
 
-  $('#creativeMood').click(e => {
+  $('.creativeMood').not('.modal-mood').click(e => {
     if (!$(e.target).closest('.moodsConts').hasClass('selected')) {
       creative = setupMarkersByMood(map, 'creative');
     }

@@ -9,6 +9,12 @@
 
 	<title>InteractiveMap</title>
 
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 	<!-- STYLE -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="./style/map.css">
@@ -19,8 +25,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
 	<script src="/scripts/map.js"></script>
 
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
 	<!-- React.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react.js"></script>
@@ -40,43 +44,187 @@
 </head>
 
 <body>
+
+	<a class="home-btn m-2" href="#/"><img src="./res/img/icons/Home.png"></a>
+
+	<!--  MOOD FILTER -->
 	<div class="grid-container">
-		<a class="moodsConts" id="adventMood" >
-			<img id="compass" src="./res/img/icons/compass.png">
-			<img id="arrow" src="./res/img/icons/arrow.png">
-			<img id="traveler" src="./res/img/icons/traveler.png">
-		</a>
-		<a class="moodsConts" id="sadMood" >
-			<img id="sadface" src="./res/img/icons/sadface.png">
-			<img id="tear" src="./res/img/icons/tear.png">
-		</a>
-		<a class="moodsConts" id="romanticMood" >
-			<img id="heart" src="./res/img/icons/heart.png">
-			<img id="couple" src="./res/img/icons/couple.png">
-		</a>
-		<a class="moodsConts" id="hungryMood" >
-			<img id="burger1" src="./res/img/icons/burger1.png">
-			<img id="burger2" src="./res/img/icons/burger2.png">
-			<img id="burger3" src="./res/img/icons/burger3.png">
-		</a>
-		<a class="moodsConts" id="tiredMood" >
-			<div class="Zzz">
-				<span class="s2">z</span>
-				<span class="s3">z</span>
-				<span class="s4">z</span>
-				<span class="s5">z</span>
-				<span class="s6">z</span>
-			</div>
-			<img id="tiredMan" src="./res/img/icons/tiredMan.png">
-		</a>
-		<a class="moodsConts" id="creativeMood" >
-			<img id="creativeFace" src="./res/img/icons/creativeFace.png">
-			<img id="gear1" class="spin" src="./res/img/icons/gear.png">
-			<img id="gear2" class="spin-back" src="./res/img/icons/gear.png">
-			<img id="gear3" class="spin" src="./res/img/icons/gear.png">
-		</a>
+	  <a class="moodsConts adventMood" >
+	    <img class="compass" src="./res/img/icons/compass.png">
+	    <img class="arrow" src="./res/img/icons/arrow.png">
+	    <img class="traveler" src="./res/img/icons/traveler.png">
+	  </a>
+	  <a class="moodsConts sadMood" >
+	    <img class="sadface" src="./res/img/icons/sadface.png">
+	    <img class="tear" src="./res/img/icons/tear.png">
+	  </a>
+	  <a class="moodsConts romanticMood" >
+	    <img class="heart" src="./res/img/icons/heart.png">
+	    <img class="couple" src="./res/img/icons/couple.png">
+	  </a>
+	  <a class="moodsConts hungryMood" >
+	    <img class="burger1" src="./res/img/icons/burger1.png">
+	    <img class="burger2" src="./res/img/icons/burger2.png">
+	    <img class="burger3" src="./res/img/icons/burger3.png">
+	  </a>
+	  <a class="moodsConts tiredMood" >
+	    <div class="Zzz">
+	      <span class="s2">z</span>
+	      <span class="s3">z</span>
+	      <span class="s4">z</span>
+	      <span class="s5">z</span>
+	      <span class="s6">z</span>
+	    </div>
+	    <img class="tiredMan" src="./res/img/icons/tiredMan.png">
+	  </a>
+	  <a class="moodsConts creativeMood" >
+	    <img class="creativeFace" src="./res/img/icons/creativeFace.png">
+	    <img class="gear1 spin" src="./res/img/icons/gear.png">
+	    <img class="gear2 spin-back" src="./res/img/icons/gear.png">
+	    <img class="gear3 spin" src="./res/img/icons/gear.png">
+	  </a>
 	</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="changeSettings" tabindex="-1" role="dialog" aria-labelledby="modal-settings" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-place_name">'place name' settings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+			<div class="modal-body">
+			  <h5 class="text-center">Have I been here before?</h5>
+			  <p id="modal-mood" class="text-center">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative visited-yes" width="50px" height="50px" src="./res/img/icons/success.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative visited-no" width="50px" height="50px" src="./res/img/icons/error.svg">
+				</p>
+			  <hr>
+			  <h5 class="text-center">Do I like this place?</h5>
+				<p class="text-center">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative liked-yes" width="50px" height="50px" src="./res/img/icons/success.svg">
+					<img class="btn btn-sm p-0 rounded-circle mx-auto position-relative liked-no" width="50px" height="50px" src="./res/img/icons/error.svg">
+				</p>
+				<hr>
+				<h5 class="text-center">How does this place makes me feel?</h5>
+				<p class="text-center">
+					<div class="grid-container-modal">
+						<a id="adventurous" class="moodsConts adventMood modal-mood" >
+							<img class="compass" src="./res/img/icons/compass.png">
+							<img class="arrow" src="./res/img/icons/arrow.png">
+							<img class="traveler" src="./res/img/icons/traveler.png">
+						</a>
+						<a id="sad" class="moodsConts sadMood modal-mood" >
+							<img class="sadface" src="./res/img/icons/sadface.png">
+							<img class="tear" src="./res/img/icons/tear.png">
+						</a>
+						<a id="romantic" class="moodsConts romanticMood modal-mood" >
+							<img class="heart" src="./res/img/icons/heart.png">
+							<img class="couple" src="./res/img/icons/couple.png">
+						</a>
+						<a id="hungry" class="moodsConts hungryMood modal-mood" >
+							<img class="burger1" src="./res/img/icons/burger1.png">
+							<img class="burger2" src="./res/img/icons/burger2.png">
+							<img class="burger3" src="./res/img/icons/burger3.png">
+						</a>
+						<a id="tired" class="moodsConts tiredMood modal-mood" >
+							<div class="Zzz">
+								<span class="s2">z</span>
+								<span class="s3">z</span>
+								<span class="s4">z</span>
+								<span class="s5">z</span>
+								<span class="s6">z</span>
+							</div>
+							<img class="tiredMan" src="./res/img/icons/tiredMan.png">
+						</a>
+						<a id="creative" class="moodsConts creativeMood modal-mood" >
+							<img class="creativeFace" src="./res/img/icons/creativeFace.png">
+							<img class="gear1 spin" src="./res/img/icons/gear.png">
+							<img class="gear2 spin-back" src="./res/img/icons/gear.png">
+							<img class="gear3 spin" src="./res/img/icons/gear.png">
+						</a>
+					</div>
+				</p>
+			</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<!-- MAP -->
 	<div id='map'></div>
+
+	<!-- Modal Script -->
+	<script type="text/javascript">
+	$('.visited-yes').on('click', e => {
+			data = JSON.parse(localStorage.getItem('data')) || json;
+			let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+			let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+			data[zone][0][place].isVisited = 'yes';
+			localStorage.setItem('data', JSON.stringify(data))
+
+			if(data[zone][0][place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+				$('.visited-yes').addClass('btn-success')
+				$('.visited-no').removeClass('btn-danger')
+			} else {
+				$('.visited-no').addClass('btn-danger')
+				$('.visited-yes').removeClass('btn-danger')
+			}
+		})
+
+		$('.visited-no').on('click', e => {
+				data = JSON.parse(localStorage.getItem('data')) || json;
+				let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+				let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+				data[zone][0][place].isVisited = 'no';
+				localStorage.setItem('data', JSON.stringify(data))
+
+				if(data[zone][0][place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+					$('.visited-yes').addClass('btn-success')
+					$('.visited-no').removeClass('btn-danger')
+				} else {
+					$('.visited-no').addClass('btn-danger')
+					$('.visited-yes').removeClass('btn-success')
+				}
+			})
+
+			$('.liked-yes').on('click', e => {
+					data = JSON.parse(localStorage.getItem('data')) || json;
+					let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+					let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+					data[zone][0][place].isVisited = 'yes';
+					localStorage.setItem('data', JSON.stringify(data))
+
+					if(data[zone][0][place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+						$('.liked-yes').addClass('btn-success')
+						$('.liked-no').removeClass('btn-danger')
+					} else {
+						$('.liked-no').addClass('btn-danger')
+						$('.liked-yes').removeClass('btn-danger')
+					}
+				})
+
+				$('.liked-no').on('click', e => {
+						data = JSON.parse(localStorage.getItem('data')) || json;
+						let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
+						let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
+						data[zone][0][place].isLiked = 'no';
+						localStorage.setItem('data', JSON.stringify(data))
+
+						if(data[zone][0][place].isLiked === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+							$('.liked-yes').addClass('btn-success')
+							$('.liked-no').removeClass('btn-danger')
+						} else {
+							$('.liked-no').addClass('btn-danger')
+							$('.liked-yes').removeClass('btn-success')
+						}
+					})
+	</script>
 </body>
 
 </html>
