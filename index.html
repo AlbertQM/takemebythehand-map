@@ -162,27 +162,27 @@
 	<!-- Modal Script -->
 	<script type="text/javascript">
 
-	function updateStat(stat, elem, value) {
-		$(elem).on('click', e => {
+	function updateStat(stat, query, elemY, elemN, value) {
+		$(query).on('click', e => {
 			let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
 			let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
 			data[zone][0][place][stat] = value;
 			localStorage.setItem('data', JSON.stringify(data))
 
 			if(data[zone][0][place][stat] === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
-				$('.visited-yes').addClass('btn-success')
-				$('.visited-no').removeClass('btn-danger')
+				$(elemY).addClass('btn-success')
+				$(elemN).removeClass('btn-danger')
 			} else {
-				$('.visited-no').addClass('btn-danger')
-				$('.visited-yes').removeClass('btn-danger')
+				$(elemN).addClass('btn-danger')
+				$(elemY).removeClass('btn-success')
 			}
 		})
 	}
 
-	updateStat("isVisited", ".visited-yes", "yes");
-	updateStat("isVisited", ".visited-no", "no");
-	updateStat("isLiked", ".liked-yes", "yes");
-	updateStat("isLiked", ".liked-no", "no");
+	updateStat("isVisited",  ".visited-yes", ".visited-yes", ".visited-no", "yes");
+	updateStat("isVisited",  ".visited-no", ".visited-yes", ".visited-no", "no");
+	updateStat("isLiked",  ".liked-yes", ".liked-yes", ".liked-no", "yes");
+	updateStat("isLiked",  ".liked-no", ".liked-yes", ".liked-no", "no");
 
 
 	function updateMood(mood) {
