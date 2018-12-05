@@ -99,6 +99,11 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
           settings.src = '/res/img/icons/settings.svg'
           $(settings).attr('data-toggle', 'modal');
           $(settings).attr('data-target', '#changeSettings');
+
+          $(settings).hover(e => { //Animate to signify click affordance
+            $(e.target).toggleClass('icon-hover')
+          })
+
           $(settings).on('click', e => {
             $('#modal-place_name').html(placesObj[place].name) //Set modal name to place clicked
             $('#modal-place_name').attr('zone', zone)
