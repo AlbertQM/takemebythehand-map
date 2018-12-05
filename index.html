@@ -215,6 +215,11 @@
 				$('.mood-error').css('display', 'none') //Hide the error message
 			}
 
+			$('.modal-content').mousemove(() => {
+				$(target).removeAttr('style');
+			})
+
+
 			localStorage.setItem('data', JSON.stringify(data))
 		})
 	}
