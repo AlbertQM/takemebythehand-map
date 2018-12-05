@@ -419,3 +419,15 @@ p {
 .modal-mood {
 	background: transparent;
 }
+
+.mood-error {
+	position: relative;
+	top: 50px;
+	left: 35px;
+	color: red;
+	display: none;
+}
+
+.icon-hover {
+	zoom: 1.1;
+}
