@@ -159,11 +159,15 @@
 	<!-- MAP -->
 	<div id='map'></div>
 
+<!-- AudioFX -->
+	<!-- <audio id="select"><source src="./res/audio/select.mp3" type="audio/mp3"></audio> -->
+
 	<!-- Modal Script -->
 	<script type="text/javascript">
 
 	function updateStat(stat, query, elemY, elemN, value) {
 		$(query).on('click', e => {
+			// $('#select').get(0).play();
 			let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
 			let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
 			data[zone][0][place][stat] = value;
@@ -187,6 +191,7 @@
 
 	function updateMood(mood) {
 		$(`#${mood}`).on('click', e => {
+			// $('#select').get(0).play();
 			let zone = $(e.target).closest('.modal-content').find('#modal-place_name').attr('zone')
 			let place = $(e.target).closest('.modal-content').find('#modal-place_name').attr('place')
 			let target = $(e.target).closest('.modal-mood');
