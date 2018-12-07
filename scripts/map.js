@@ -1,6 +1,7 @@
 let moodColour; //Obj containing mood:colour
 let data;       //Used to store a copy of json - so we modify the copy, not the original
 let adventurous, hungry, creative, tired, romantic, sad; //Used to filter the markers
+let liked, visited; //Used to filter the markers
 
 function setup() {
   noCanvas();
@@ -10,6 +11,7 @@ function setup() {
   moodColour = {adventurous: "rgba(66, 173, 244, 0.65)", hungry: "rgba(118, 69, 209, 0.65)", creative: "rgba(229, 150, 22, 0.65)", tired: "rgba(56, 181, 97, 0.65)", romantic: "rgba(218, 118, 104, 0.65)", sad: "rgba(244, 205, 65, 0.65)"}
   let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
   setupMoodFilter(map);
+  setupListFilter(map);
 }
 
 function draw() {
@@ -262,6 +264,34 @@ function removeMarkers(markersArray) {//Removes all markers of a mood
   }
 }
 
+function setupListFilter(map) {
+  $('.like-btn').click(e => {
+    removeMarkers(liked);
+    liked = setupMarkersList(map, "isLiked");
+
+    removeMarkers(visited);
+    removeMarkers(adventurous);
+    removeMarkers(hungry);
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+  $('.wish-btn').click(e => {
+    removeMarkers(visited);
+    visited = setupMarkersList(map, "isVisited");
+
+    removeMarkers(liked);
+    removeMarkers(adventurous);
+    removeMarkers(hungry);
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+}
 
 function setupMoodFilter(map) {
   $('.adventMood').not('.modal-mood').click(e => {
