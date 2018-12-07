@@ -302,6 +302,8 @@ function setupMoodFilter(map) {
       $(mood).removeClass('selected')
     })
 
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(hungry);
     removeMarkers(sad);
     removeMarkers(romantic);
@@ -316,6 +318,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(adventurous);
     removeMarkers(romantic);
     removeMarkers(hungry);
@@ -330,6 +335,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(sad);
     removeMarkers(adventurous);
     removeMarkers(hungry);
@@ -344,6 +352,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#tiredMood').each(mood => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(sad);
     removeMarkers(romantic);
     removeMarkers(hungry);
@@ -358,6 +369,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(adventurous);
     removeMarkers(sad);
     removeMarkers(romantic);
@@ -372,6 +386,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(sad);
     removeMarkers(romantic);
     removeMarkers(hungry);
