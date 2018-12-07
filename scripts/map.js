@@ -1,6 +1,7 @@
 let moodColour; //Obj containing mood:colour
 let data;       //Used to store a copy of json - so we modify the copy, not the original
 let adventurous, hungry, creative, tired, romantic, sad; //Used to filter the markers
+let liked, visited; //Used to filter the markers
 
 function setup() {
   noCanvas();
@@ -10,6 +11,7 @@ function setup() {
   moodColour = {adventurous: "rgba(66, 173, 244, 0.65)", hungry: "rgba(118, 69, 209, 0.65)", creative: "rgba(229, 150, 22, 0.65)", tired: "rgba(56, 181, 97, 0.65)", romantic: "rgba(218, 118, 104, 0.65)", sad: "rgba(244, 205, 65, 0.65)"}
   let map = createMap(51.509865, -0.118092);//Creates a map centered in London center
   setupMoodFilter(map);
+  setupListFilter(map);
 }
 
 function draw() {
@@ -32,40 +34,6 @@ function createMarker(lat, long, map){
   .setLngLat([long, lat])
   .addTo(map)
 }
-
-function setupMarkersByZone(map, zone) {//Creates and places markers based on zone (central, east, south)
-  let curMap = map;
-  let curMarkers = []
-  data[zone].forEach(placesObj => {//Places = hydepark obj, soho obj etc.
-    const placesNames = Object.keys(placesObj) //hydepark, soho, etc
-    for (let place of placesNames) {
-      let coords = [placesObj[place].long, placesObj[place].lat];
-
-
-      //Create a DOM element for the marker
-      var el = document.createElement('div');
-      el.className = 'marker';
-      el.style.background = 'RED';
-
-      el.addEventListener('click', function() {
-        //Show React modal
-      });
-
-      //Add marker to map
-      let curMarker = new mapboxgl.Marker({
-        element: el,
-        anchor: 'bottom'
-      })
-
-      .setLngLat(coords)
-      .addTo(curMap);
-
-      curMarkers.push(curMarker)
-    }
-  });
-  return curMarkers;
-}
-
 
 function setupMarkersByMood(map, mood) {//Creates and places markers based on mood (adventurous, tired, sad, romantic, hungry, creative)
   let curMap = map;
@@ -173,6 +141,113 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
   return curMarkers;
 }
 
+function setupMarkersList(map, key) {//Creates and places markers based on isVisited or isLiked
+  let curMap = map;
+  let curMarkers = [];
+  for (let zone in data) {
+    data[zone].forEach(placesObj => {
+      const placesNames = Object.keys(placesObj)
+      for (let place of placesNames) {
+        let coords = [placesObj[place].long, placesObj[place].lat];
+        let list = placesObj[place][key];
+        let moods = placesObj[place].mood;
+
+        if (list == "yes") {
+
+          //Marker
+          let el = document.createElement('div');
+          el.className = 'marker';
+          el.style.background = (key == "isVisited") ? "rgba(255, 100, 100, 0.65)" : "rgba(100, 100, 255, 0.65)";
+
+          //Name
+          let name = document.createElement('p');
+          name.className = 'marker-name';
+          name.innerHTML = placesObj[place].name;
+          el.appendChild(name);
+
+          //Icons
+          let icons = document.createElement('div');
+          icons.className = 'marker-icon-wrapper'
+
+          let settings = document.createElement('img')
+          settings.className = 'marker-icon'
+          settings.src = '/res/img/icons/settings.svg'
+          $(settings).attr('data-toggle', 'modal');
+          $(settings).attr('data-target', '#changeSettings');
+
+          $(settings).hover(e => { //Animate to signify click affordance
+            $(e.target).toggleClass('icon-hover')
+          })
+
+          $(settings).on('click', e => {
+            $('#modal-place_name').html(placesObj[place].name) //Set modal name to place clicked
+            $('#modal-place_name').attr('zone', zone)
+            $('#modal-place_name').attr('place', place)
+
+
+            if(placesObj[place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+              $('.visited-yes').addClass('btn-success')
+              $('.visited-no').removeClass('btn-danger')
+            } else {
+              $('.visited-no').addClass('btn-danger')
+              $('.visited-yes').removeClass('btn-success')
+            }
+
+            if(placesObj[place].isLiked === "yes") {
+              $('.liked-yes').addClass('btn-success')
+              $('.liked-no').removeClass('btn-danger')
+            } else {
+              $('.liked-no').addClass('btn-danger')
+              $('.liked-yes').removeClass('btn-success')
+            }
+
+            /* Resets hovered moods */
+            $('.grid-container-modal a').each((idx, el) => {
+              $(el).removeClass('hovered')
+            })
+            /* Turns on active moods */
+            Object.keys(moods).forEach(singleMood => {
+              $(`#${singleMood}`).addClass('hovered');
+            })
+
+          })
+          icons.appendChild(settings);
+
+          let showPlaceInfo = document.createElement('img')
+          showPlaceInfo.className = 'marker-icon'
+          showPlaceInfo.src = '/res/img/icons/placeholder.svg'
+          icons.appendChild(showPlaceInfo);
+
+          el.appendChild(icons);
+
+          el.addEventListener('mouseenter', () => {
+            $(name).toggleClass('hovered');
+            icons.style.display = 'inline-grid'
+          })
+
+          el.addEventListener('mouseleave', () => {
+            $(name).toggleClass('hovered');
+            icons.style.display = 'none'
+          })
+
+
+          //Add marker to map
+          let curMarker = new mapboxgl.Marker({
+            element: el,
+            anchor: 'bottom'
+          })
+
+          .setLngLat(coords)
+          .addTo(curMap);
+
+          curMarkers.push(curMarker)
+        }
+      }
+    });
+  }
+  return curMarkers;
+}
+
 function setIsLiked(zone, place, isLiked){
   data[zone][0][place].isLiked = isLiked;
 }
@@ -189,6 +264,34 @@ function removeMarkers(markersArray) {//Removes all markers of a mood
   }
 }
 
+function setupListFilter(map) {
+  $('.like-btn').click(e => {
+    removeMarkers(liked);
+    liked = setupMarkersList(map, "isLiked");
+
+    removeMarkers(visited);
+    removeMarkers(adventurous);
+    removeMarkers(hungry);
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+  $('.wish-btn').click(e => {
+    removeMarkers(visited);
+    visited = setupMarkersList(map, "isVisited");
+
+    removeMarkers(liked);
+    removeMarkers(adventurous);
+    removeMarkers(hungry);
+    removeMarkers(sad);
+    removeMarkers(romantic);
+    removeMarkers(creative);
+    removeMarkers(tired);
+  })
+
+}
 
 function setupMoodFilter(map) {
   $('.adventMood').not('.modal-mood').click(e => {
@@ -199,6 +302,8 @@ function setupMoodFilter(map) {
       $(mood).removeClass('selected')
     })
 
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(hungry);
     removeMarkers(sad);
     removeMarkers(romantic);
@@ -213,6 +318,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(adventurous);
     removeMarkers(romantic);
     removeMarkers(hungry);
@@ -227,6 +335,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(sad);
     removeMarkers(adventurous);
     removeMarkers(hungry);
@@ -241,6 +352,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#tiredMood').each(mood => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(sad);
     removeMarkers(romantic);
     removeMarkers(hungry);
@@ -255,6 +369,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(adventurous);
     removeMarkers(sad);
     removeMarkers(romantic);
@@ -269,6 +386,9 @@ function setupMoodFilter(map) {
     $('.moodsConts').not('#romanticMood').each((idx, mood) => {
       $(mood).removeClass('selected')
     })
+
+    removeMarkers(liked);
+    removeMarkers(visited);
     removeMarkers(sad);
     removeMarkers(romantic);
     removeMarkers(hungry);
