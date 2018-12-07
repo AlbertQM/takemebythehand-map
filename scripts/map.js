@@ -33,40 +33,6 @@ function createMarker(lat, long, map){
   .addTo(map)
 }
 
-function setupMarkersByZone(map, zone) {//Creates and places markers based on zone (central, east, south)
-  let curMap = map;
-  let curMarkers = []
-  data[zone].forEach(placesObj => {//Places = hydepark obj, soho obj etc.
-    const placesNames = Object.keys(placesObj) //hydepark, soho, etc
-    for (let place of placesNames) {
-      let coords = [placesObj[place].long, placesObj[place].lat];
-
-
-      //Create a DOM element for the marker
-      var el = document.createElement('div');
-      el.className = 'marker';
-      el.style.background = 'RED';
-
-      el.addEventListener('click', function() {
-        //Show React modal
-      });
-
-      //Add marker to map
-      let curMarker = new mapboxgl.Marker({
-        element: el,
-        anchor: 'bottom'
-      })
-
-      .setLngLat(coords)
-      .addTo(curMap);
-
-      curMarkers.push(curMarker)
-    }
-  });
-  return curMarkers;
-}
-
-
 function setupMarkersByMood(map, mood) {//Creates and places markers based on mood (adventurous, tired, sad, romantic, hungry, creative)
   let curMap = map;
   let curMarkers = [];
