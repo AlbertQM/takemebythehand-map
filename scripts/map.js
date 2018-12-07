@@ -139,6 +139,113 @@ function setupMarkersByMood(map, mood) {//Creates and places markers based on mo
   return curMarkers;
 }
 
+function setupMarkersList(map, key) {//Creates and places markers based on isVisited or isLiked
+  let curMap = map;
+  let curMarkers = [];
+  for (let zone in data) {
+    data[zone].forEach(placesObj => {
+      const placesNames = Object.keys(placesObj)
+      for (let place of placesNames) {
+        let coords = [placesObj[place].long, placesObj[place].lat];
+        let list = placesObj[place][key];
+        let moods = placesObj[place].mood;
+
+        if (list == "yes") {
+
+          //Marker
+          let el = document.createElement('div');
+          el.className = 'marker';
+          el.style.background = (key == "isVisited") ? "rgba(255, 100, 100, 0.65)" : "rgba(100, 100, 255, 0.65)";
+
+          //Name
+          let name = document.createElement('p');
+          name.className = 'marker-name';
+          name.innerHTML = placesObj[place].name;
+          el.appendChild(name);
+
+          //Icons
+          let icons = document.createElement('div');
+          icons.className = 'marker-icon-wrapper'
+
+          let settings = document.createElement('img')
+          settings.className = 'marker-icon'
+          settings.src = '/res/img/icons/settings.svg'
+          $(settings).attr('data-toggle', 'modal');
+          $(settings).attr('data-target', '#changeSettings');
+
+          $(settings).hover(e => { //Animate to signify click affordance
+            $(e.target).toggleClass('icon-hover')
+          })
+
+          $(settings).on('click', e => {
+            $('#modal-place_name').html(placesObj[place].name) //Set modal name to place clicked
+            $('#modal-place_name').attr('zone', zone)
+            $('#modal-place_name').attr('place', place)
+
+
+            if(placesObj[place].isVisited === "yes") {//Checks from data if place has been visited and modifies the UI accordingly
+              $('.visited-yes').addClass('btn-success')
+              $('.visited-no').removeClass('btn-danger')
+            } else {
+              $('.visited-no').addClass('btn-danger')
+              $('.visited-yes').removeClass('btn-success')
+            }
+
+            if(placesObj[place].isLiked === "yes") {
+              $('.liked-yes').addClass('btn-success')
+              $('.liked-no').removeClass('btn-danger')
+            } else {
+              $('.liked-no').addClass('btn-danger')
+              $('.liked-yes').removeClass('btn-success')
+            }
+
+            /* Resets hovered moods */
+            $('.grid-container-modal a').each((idx, el) => {
+              $(el).removeClass('hovered')
+            })
+            /* Turns on active moods */
+            Object.keys(moods).forEach(singleMood => {
+              $(`#${singleMood}`).addClass('hovered');
+            })
+
+          })
+          icons.appendChild(settings);
+
+          let showPlaceInfo = document.createElement('img')
+          showPlaceInfo.className = 'marker-icon'
+          showPlaceInfo.src = '/res/img/icons/placeholder.svg'
+          icons.appendChild(showPlaceInfo);
+
+          el.appendChild(icons);
+
+          el.addEventListener('mouseenter', () => {
+            $(name).toggleClass('hovered');
+            icons.style.display = 'inline-grid'
+          })
+
+          el.addEventListener('mouseleave', () => {
+            $(name).toggleClass('hovered');
+            icons.style.display = 'none'
+          })
+
+
+          //Add marker to map
+          let curMarker = new mapboxgl.Marker({
+            element: el,
+            anchor: 'bottom'
+          })
+
+          .setLngLat(coords)
+          .addTo(curMap);
+
+          curMarkers.push(curMarker)
+        }
+      }
+    });
+  }
+  return curMarkers;
+}
+
 function setIsLiked(zone, place, isLiked){
   data[zone][0][place].isLiked = isLiked;
 }
