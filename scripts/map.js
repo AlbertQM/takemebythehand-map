@@ -22,7 +22,7 @@ function createMap(lat, long) {
   mapboxgl.accessToken = API_KEY;
   let map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9',
+    style: 'mapbox://styles/mapbox/streets-v10',
     center: [long, lat],
     zoom: 12,
   });
