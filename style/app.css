@@ -16,6 +16,8 @@ h1{
   border-radius: 15px;
 }
 
+/*  - - - - Links - - - - */
+
 .link-wrapper {
 	position: absolute;
 	display: grid;
@@ -72,6 +74,7 @@ h1{
 	opacity: .9;
 }
 
+/*  - - - - Moods - - - - */
 
 .adventMood {
 	background-color: rgba(66, 173, 244, 0.65);
@@ -458,6 +461,8 @@ p {
   padding-bottom: 20px;
 }
 
+/*  - - - - Modal - - - - */
+
 .modal-mood {
 	background: transparent;
 }
@@ -469,6 +474,8 @@ p {
 	color: red;
 	display: none;
 }
+
+/*  - - - - Map Markers - - - - */
 
 .icon-hover {
 	zoom: 1.1;
