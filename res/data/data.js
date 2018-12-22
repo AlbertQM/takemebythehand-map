@@ -195,6 +195,38 @@ let json = {
 			"picture":"/res/img/places/Tower_London.jpg",
 			"isVisited":"no", "isLiked":"no"
 		},
+		
+		"thetowerhotel":
+		{
+			"name":"The Tower Hotel",
+			"lat":51.5063443, "long":-0.0753363,
+			"mood":{"tired": 1},
+			"description":"Nestled amidst the River Thames, the Tower of London and St Katharine Docks, The Tower Hotel boasts the finest views in London. No other hotel brings you closer to some of the country’s best loved landmarks.",
+			"weekdays":"-",
+			"weekends":"-",
+			"price":"92.00 - 309.00",
+			"picture":"/res/img/places/Tower_Hotel.jpg",
+			"isVisited":"No", "isLiked":"No",
+		},
+	}],
+	
+	"north":
+	[{
+
+		"templeofseitan":
+		{
+			"name":"Temple of Seitan",
+			"lat":51.537800, "long":-0.130700,
+			"mood":{"":},
+			"description":"",
+			"weekedays":"11.00-21.00",
+			"weekends":"11.00-18.00",
+			"price":"Menu",
+			"picture":"res/img/places/Temple_Cam.jpg",
+			"isVisited":"No", "isLiked":"No",
+		},
+		
+
 	}],
 
 	"east":
